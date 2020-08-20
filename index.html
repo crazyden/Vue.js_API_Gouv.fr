@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <title>API Gouv.fr - exemples d'utilisation avec Vue.js -</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="album.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <main role="main">
+        <div class="album py-5 bg-light" id="app-api">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="card mb-6 shadow-sm">
+                            <div class="card-body">
+                                <p class="card-text">Requête Communes avec le "Code Postal"</p>
+                                <div class="btn-group input-group-prepend">
+                                    <input type="number" v-model.number="codeVille"
+                                        placeholder="Entrer le code postal ...">
+                                    <button v-on:click="codeEnter" type="button"
+                                        class="btn btn-sm btn-primary">Valider</button>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <ul>
+                                        <li v-for="(inf, id) in info">
+                                            <table>
+                                                <tr>
+                                                    <td> Ville : </td>
+                                                    <td> {{inf.nom}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Code INSEE - Ville : </td>
+                                                    <td> {{inf.code}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Code Département : </td>
+                                                    <td> {{inf.codeDepartement}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Code Région : </td>
+                                                    <td> {{inf.codeRegion}} </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Code(s) postal(aux) : </td>
+                                                    <td> {{inf.codesPostaux}} </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Population : </td>
+                                                    <td> {{inf.population}} </td>
+                                                </tr>
+                                            </table>
+
+                                            <hr><br>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card mb-6 shadow-sm">
+
+                            <div class="card-body">
+                                <p class="card-text">Requête Communes avec le "Département"</p>
+                                <div class="btn-group input-group-prepend">
+                                    <input type="number" v-model.number="codeDept"
+                                        placeholder="Entrer le numéro département...">
+                                    <button v-on:click="deptEnter" type="button"
+                                        class="btn btn-sm btn-primary">Valider</button>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <ul>
+                                        <li v-for="(commune, id) in communes">
+                                            <table>
+                                                <tr>
+                                                    <td> Ville : </td>
+                                                    <td> {{commune.nom}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Code(s) postal(aux) : </td>
+                                                    <td> {{commune.codesPostaux}} </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Population : </td>
+                                                    <td> {{commune.population}} </td>
+                                                </tr>
+                                            </table>
+
+                                            <hr><br>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+
+
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
